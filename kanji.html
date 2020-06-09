@@ -1,16 +1,18 @@
 <head>
-    <link rel="stylesheet" href="kanji.css">
-
+    <link rel="stylesheet" href="traTu.css">
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="jquery-sakura.css" rel="stylesheet" type="text/css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta charset="utf-8">
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script src="kanji.js"></script>
+<script src="ngu_phap.js"></script>
 <style>
 
 @media only screen and (max-width: 1000px) {
@@ -35,38 +37,202 @@ img{
         border:none;
 }
 }
-
+* {
+  box-sizing: border-box;
+}
 </style>
-
 </head>
 
 <body>
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=434169067326640&autoLogAppEvents=1"></script>
-    <div id = "b" style ="display: flex;">
-<div id = "s1" class = "bar col-md-2" style = "padding-left: 0px;padding-right: 0px;" >
+  
 
-        <a href="home.html"><div class = "catalogue">Trang chủ</div></a>
-        <a href="tu_vung01.html"><div class = "catalogue">Từ vựng</div></a>
-        <a href="ngu_phap01.html"><div class = "catalogue">Ngữ pháp</div></a>
-        <a href="mau_cau01.html"><div  class = "catalogue">Mẫu câu</div></a>
-        <a href="hoi_thoai.html"><div class = "catalogue">Hội thoại</div></a>
-        <a href="mondai01.html"><div class = "catalogue">Luyện tập</div></a>
+
+
+<div id = "a" class="col-md-12" style = "padding-right: 0px; padding-left: 0px;position: relative;">
+  
+
+<div  id = "s3" class = "containerr "  >
+    <div  class = "bar col-md-3" >
+        <a href="home.html"><div class = "catalogue "><i class="fa fa-home fa-lg"></i>Trang chủ</div></a>
+        <a href="tu_vung01.html"><div class = "catalogue" ><i class="fa fa-book fa-lg" ></i>Từ vựng</div></a>
+        <a href="ngu_phap01.html"><div class = "catalogue"><i class="fa fa-leanpub fa-lg" ></i>Ngữ pháp</div></a>
+        <a href="mau_cau01.html"><div  class = "catalogue" ><i class="fa fa-commenting fa-lg" ></i>Mẫu câu</div></a>
+        <a href="hoi_thoai.html"><div class = "catalogue"><i class="fa fa-graduation-cap fa-lg" ></i>Hội thoại</div></a>
+        <a href="mondai01.html"><div class = "catalogue" ><i class="fa fa-file-text-o fa-lg" ></i>Luyện tập</div></a>
+       
+        <a href="kanji.html"><div  class = "catalogue " style="color: red;"><i class="fa fa-search fa-lg"></i>Tra từ</div></a>
+    
         
-        <a href="kanji.html"><div style = "color:aqua" class = "catalogue ">Kanji</div></a>
-   </div>
+    </div>
+ <div id = "khung" style="position: relative;z-index: 1;padding-right: 0px;width: 50%;border: 2px solid #ddd;border-radius: 10px;"  > 
+
+<div id = "noi_dung" class = "main_content tab-content ">
+    <div class="header">
+        <h1>Từ điển Nhật - Việt</h1>
+       </div>
+       
+       <div class="wrapper " style="display: flex;flex-direction: row;height: 502px;">
+        <div class="words" style="border: 2px solid #ddd;">
+         <input style = "height: 25px;width: 150px; " type="text" id="search" value = "" placeholder="nhập từ...">
+         <button onclick="search()"><i class="fa fa-search" style="color: white;"></i></button>
+         <hr style="width: 50%;margin-left: 0px;">
+         <ul id="word_list" style="height: 500px;display: flex;flex-direction: column;color: red;font-size: 18px;"></ul>
+        </div>
+        <div class="word">
+         <h3 style ="color: red;font-weight: 700;font-size: 24px;"id="word_text"></h3>
+         <p id="definition" style="color: blue;font-size: 18px;"></p>
+         <hr>
+         <h3>Ví dụ</h3>
+         <li style= "font-size: 18px;" id="related"></li>
+        </div>
+       </div>
+                
+     
 
 
-<div id = "a" class="col-md-10" style = "padding-right: 0px; padding-left: 0px;">
 
-<div  id = "s3" class = "containerr"  style="width:100%;">
- <div id = "khung" style="border:solid;background-color: white;margin-top: 2vw"> 
 
+
+    
 </div>
+</div>
+
                     
                     
     </div>
     </div>
-    <div class="fb-comments" data-href="file:///C:/Users/Admin/Desktop/lam_trang_web_tieng_nhat/kanji.html" data-width="200" data-numposts="5"></div>
-</div>
+    <script type="text/javascript">
+        var dictionary = [
+         {
+          word:"わたし",
+          def:"◆ tôi (danh từ)",
+          nghia_cau:["Tôi tên là mike"],
+          rel:["私 （わたしは）マイクと申します。"]
+         },
+         {
+          word:"こども",
+          def:"◆ Đứa trẻ, đứa con (danh từ)",
+          nghia_cau:["Đứa con tôi năm nay 5 tuổi"],
+          rel:["うちの子供（こども）は5歳（さい）です。"]
+         },
+         {
+          word:"ほん",
+          def:"◆ Sách (danh từ)",
+          nghia_cau:["Tôi đang đọc cuốn sách này."],
+          rel:["この本（ほん）を読（よん）んでいる。"]
+         },
+         {
+          word:"いきます",
+          def:"◆ Đi (tha động từ)",
+          nghia_cau:["Đi đến trường"],
+          rel:["学校（がっこ）に行きます（いきます）"]
+         },
+         {
+          word:"きます",
+          def:"◆ Đến (tha động từ)",
+          nghia_cau:["Anh/Chị Tanaka đã đến chưa ?"],
+          rel:["田中さんは来（き）ましたか？"]
+         },
+         {
+          word:"いぬ",
+          def:"◆ Con chó(danh từ)",
+          nghia_cau:["Con chó nhà tôi"],
+          rel:["うちの犬（いぬ）"]
+         },
+         {
+          word:"やま",
+          def:"◆ Núi(danh từ)",
+          nghia_cau:["Leo núi"],
+          rel:["山（やま）に登る"]
+         },
+         {
+          word:"ちち",
+          def:"◆ Bố(danh từ)",
+          nghia_cau:["Bố tôi là người hiền lành"],
+          rel:["父（ちち）は優しい人（ひと）です。"]
+         },
+         {
+          word:"はは",
+          def:"◆ Mẹ(danh từ)",
+          nghia_cau:["Mẹ tôi là người hiền lành"],
+          rel:["母（はは）は優しい人（ひと）です"]
+         },
+         {
+          word:"かのじょ",
+          def:"◆ Cô ấy(danh từ)",
+          nghia_cau:["Người quen của cô ấy"],
+          rel:["彼女（かのじょ）の知り合い人"]
+         },
+         {
+          word:"かれ",
+          def:"◆ Anh ấy(danh từ)",
+          nghia_cau:["Người yêu của anh ấy"],
+          rel:["彼（かれ）の恋人（こいびと）"]
+         }
+        
+        ];
+        // fill the dictionary with words
+        init = function(){
+         for (var i = 0; i < dictionary.length; i++) {
+          document.getElementById('word_list').innerHTML += "<li onclick='show(" + i + ")'>" + dictionary[i].word + "</li>";
+         }
+        }
+        // call the init function when page loads
+        init();
+        // display a word, its definition and related words
+        show = function(i){
+            document.getElementById('definition').innerHTML = dictionary[i].nghia_cau; 
+         document.getElementById('word_text').innerHTML = dictionary[i].word;
+         document.getElementById('definition').innerHTML = dictionary[i].def;
+         
+         var list = "";
+         
+         for (var j = 0; j < dictionary[i].rel.length; j++) {
+          list += "<li>" + dictionary[i].rel[j] + "</li>";
+          document.getElementById('related').innerHTML = list;
+         }
+         for (var j = 0; j < dictionary[i].rel.length; j++) {
+          list += "<li>" + dictionary[i].nghia_cau[j] + "</li>";
+          document.getElementById('related').innerHTML = list;
+         }
+        }
+       
+        
+       
+           search = function(){
+              var query = document.getElementById('search').value;
+               
+               if (query == "") {
+                   return;
+               }
+               var found = -1;
+       
+               for (var i = 0; i < dictionary.length; i++) {
+                   if (query == dictionary[i].word){
+                   found = i;
+                   break;
+                   }else {
+                       document.getElementById('word_text').innerHTML = "Word not found";
+                       document.getElementById('definition').innerHTML = "The word you enter is not found in our dictionary";
+                       document.getElementById('related').innerHTML = "no related word";
+                   }
+               }
+       
+               if (found >=0){
+               show(found);
+               }
+       
+           }
+       
+       </script>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="jquery-sakura.min-mau-cau.js"></script>
+    <script>
+        $(window).load(function () {
+            $('#s3').sakura();
+        });
+        </script>  
 </body>
+    
